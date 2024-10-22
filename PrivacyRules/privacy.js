@@ -19,55 +19,91 @@ function initializeDataSet() {
         title: "Privacy Data",
         description: "Dataset for applying privacy rules",
         collections: [{
-            name: "data",
+            name: "Test Data",
             attrs: [
-                {name: "attribute1", type: 'numeric'},
-                {name: "attribute2", type: 'categorical'},
-                // Add more attributes as needed
+                {name: "Age", type: 'numeric'},
+                {name: "Gender", type: 'categorical'},
+                {name: "ZipCode", type: 'categorical'},
+                {name: "Income", type: 'numeric'},
             ]
         }]
     };
 
-    pluginHelper.initDataSet(dataSetDescription);
+    codapInterface.sendRequest({
+        action: 'create',
+        resource: 'dataContext',
+        values: dataSetDescription
+    }).then(response => {
+        if (response.success) {
+            console.log("Data context created successfully.");
+            addExampleData();
+        } else {
+            console.error("Failed to create data context.");
+        }
+    });
 }
 
+function addExampleData() {
+    const exampleData = [
+        {Age: 34, Gender: "Male", ZipCode: "12345", Income: 100000},
+        {Age: 29, Gender: "Female", ZipCode: "23456", Income: 120000},
+        {Age: 45, Gender: "Male", ZipCode: "12345", Income: 150000},
+        {Age: 19, Gender: "Female", ZipCode: "12345", Income: 200000},
+        {Age: 64, Gender: "Male", ZipCode: "23456", Income: 250000},
+        {Age: 39, Gender: "Female", ZipCode: "23456", Income: 300000},
+    ];
 
-function openCodapTable(ruleTitle) {
+    codapInterface.sendRequest({
+        action: 'create',
+        resource: 'dataContext[privacyData].item',
+        values: exampleData.map(item => ({ values: item }))
+    }).then(response => {
+        if (response.success) {
+            console.log("Example data added successfully.");
+        } else {
+            console.error("Failed to add example data.");
+        }
+    });
+}
+
+function openCodapConfigs(ruleTitle) {
     const tableConfig = {
         type: 'caseTable',
         title: `${ruleTitle} Table`,
-        dimensions: {width: 400, height: 300}
+        dimensions: {width: 400, height: 225},
+        dataContext : 'privacyData'
     };
 
     const graphConfig = {
         type: 'graph',
         title: `${ruleTitle} Graph`,
         dimensions: {width: 400, height: 300},
-        xAttributeName: 'attribute1',
-        yAttributeName: 'attribute2'
+        xAttributeName : 'Age',
+        yAttributeName : 'Income',
+        dataContext : 'privacyData'
     };
 
     codapInterface.sendRequest({
-        action: 'create',
-        resource: 'component',
-        values: tableConfig
+        action : 'create',
+        resource : 'component',
+        values : tableConfig
     }).then(response => {
-        if (response.success) {
-            console.log(`${ruleTitle} table created successfully.`);
-        } else {
-            console.error(`Failed to create ${ruleTitle} table.`);
-        }
-    });
+       if (response.success) {
+           console.log(`${ruleTitle} table created successfully.`);
+       } else {
+           console.error(`Failed to create ${ruleTitle} table.`);
+       }
+   });
 
-    codapInterface.sendRequest({
-        action: 'create',
-        resource: 'component',
-        values: graphConfig
-    }).then(response => {
-        if (response.success) {
-            console.log(`${ruleTitle} graph created successfully.`);
-        } else {
-            console.error(`Failed to create ${ruleTitle} graph.`);
-        }
-    });
+   codapInterface.sendRequest({
+       action : 'create',
+       resource : 'component',
+       values : graphConfig
+   }).then(response => {
+       if (response.success) {
+           console.log(`${ruleTitle} graph created successfully.`);
+       } else {
+           console.error(`Failed to create ${ruleTitle} graph.`);
+       }
+   });
 }
