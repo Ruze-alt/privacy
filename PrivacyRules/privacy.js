@@ -6,7 +6,7 @@ function startCodapConnection() {
     };
 
     codapInterface.init(config).then(() => {
-        console.log("CODAP connection established.");
+        console.log('CODAP connection established.');
         initializeDataSet();
     }).catch(msg => {
         console.error('CODAP connection error: ' + msg);
@@ -15,11 +15,11 @@ function startCodapConnection() {
 
 function initializeDataSet() {
     const dataSetDescription = {
-        name: "privacyData",
-        title: "Privacy Data",
-        description: "Dataset for applying privacy rules",
+        name: 'privacyData',
+        title: 'Privacy Data',
+        description: 'Dataset for applying privacy rules',
         collections: [{
-            name: "Test Data",
+            name: 'Test Data',
             attrs: [
                 {name: "Age", type: 'numeric'},
                 {name: "Gender", type: 'categorical'},
@@ -35,10 +35,10 @@ function initializeDataSet() {
         values: dataSetDescription
     }).then(response => {
         if (response.success) {
-            console.log("Data context created successfully.");
+            console.log('Data context created successfully.');
             addExampleData();
         } else {
-            console.error("Failed to create data context.");
+            console.error('Failed to create data context.');
         }
     });
 }
@@ -59,9 +59,9 @@ function addExampleData() {
         values: exampleData.map(item => ({ values: item }))
     }).then(response => {
         if (response.success) {
-            console.log("Example data added successfully.");
+            console.log('Example data added successfully.');
         } else {
-            console.error("Failed to add example data.");
+            console.error('Failed to add example data.');
         }
     });
 }
@@ -69,7 +69,7 @@ function addExampleData() {
 function openCodapConfigs(ruleTitle) {
     const tableConfig = {
         type: 'caseTable',
-        title: `${ruleTitle} Table`,
+        title: 'Privacy Data',
         dimensions: {width: 400, height: 225},
         dataContext : 'privacyData'
     };
@@ -89,9 +89,9 @@ function openCodapConfigs(ruleTitle) {
         values : tableConfig
     }).then(response => {
        if (response.success) {
-           console.log(`${ruleTitle} table created successfully.`);
+           console.log('${ruleTitle} table created successfully.');
        } else {
-           console.error(`Failed to create ${ruleTitle} table.`);
+           console.error('Failed to create ${ruleTitle} table.');
        }
    });
 
@@ -101,9 +101,9 @@ function openCodapConfigs(ruleTitle) {
        values : graphConfig
    }).then(response => {
        if (response.success) {
-           console.log(`${ruleTitle} graph created successfully.`);
+           console.log('${ruleTitle} graph created successfully.');
        } else {
-           console.error(`Failed to create ${ruleTitle} graph.`);
+           console.error('Failed to create ${ruleTitle} graph.');
        }
    });
 }
