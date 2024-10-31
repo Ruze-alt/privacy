@@ -1,19 +1,62 @@
-#mainContainer {
-    width: 400px;
-    border: 1px solid black;
-    padding: 10px;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+#main, .privacyModule {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; 
+}
+
+h1 {
+    text-align: center;
+    color: #00509e;
+    margin-top: 50px; 
 }
 
 .ruleSection {
-    margin-top: 10px;
-    border: 1px solid gray;
-    padding: 5px;
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #e3f2fd;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.ruleSection input {
-    margin-right: 10px;
+.ruleSection:hover {
+    background-color: #bbdefb;
+    transform: translateY(-3px);
 }
 
-input {
-    width: 50px;
+.ruleSection h2 {
+    margin: 0;
+    text-align: center;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.backButton {
+    position: absolute; 
+    top: 0px; 
+    right: 10px; 
 }

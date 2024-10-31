@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <title>Privacy Rules Plugin</title>
     <link rel="stylesheet" href="style.css">
-    <script src="../common/jquery.js" language="javascript"></script>
-    <script src="../common/snap.svg.js" language="javascript"></script>
-    <script src="../common/iframe-phone.js" language="JavaScript"></script>
-    <script src="../common/CodapInterface.js" language="JavaScript"></script>
-    <script src="../common/pluginHelper.js" language="JavaScript"></script>
+    <script src="../common/jquery.js"></script>
+    <script src="../common/iframe-phone.js"></script>
+    <script src="../common/CodapInterface.js"></script>
+    <script src="../common/pluginHelper.js"></script>
     <script src="privacy.js"></script>
     <script>
         $(function () {
@@ -17,28 +16,48 @@
     </script>
 </head>
 <body>
-    <div id="mainContainer">
+    <div id="main">
         <h1>Privacy Rules</h1>
-        <div class="ruleSection">
+        <div class="ruleSection" onclick="showModule('kAnonymityModule')">
             <h2>K-Anonymity</h2>
-            <input type="text" placeholder="K">
-            <button onclick="openCodapConfigs('K-Anonymity')">Apply K-Anonymity</button>
         </div>
-        <div class="ruleSection">
+        <div class="ruleSection" onclick="showModule('lDiversityModule')">
             <h2>L-Diversity</h2>
-            <input type="text" placeholder="L">
-            <button onclick="openCodapConfigs('L-Diversity')">Apply L-Diversity</button>
         </div>
-        <div class="ruleSection">
+        <div class="ruleSection" onclick="showModule('tClosenessModule')">
             <h2>T-Closeness</h2>
-            <input type="text" placeholder="T">
-            <button onclick="openCodapConfigs('T-Closeness')">Apply T-Closeness</button>
         </div>
-        <div class="ruleSection">
+        <div class="ruleSection" onclick="showModule('differentialPrivacyModule')">
             <h2>Differential Privacy</h2>
-            <input type="text" placeholder="ε">
-            <button onclick="openCodapConfigs('Differential Privacy')">Apply Differential Privacy</button>
         </div>
+    </div>
+
+    <!-- K-Anonymity Module -->
+    <div id="kAnonymityModule" class="privacyModule" style="display:none">
+        <button class="backButton" onclick="showModule('main')">Back to Main</button>
+        <h1>K-Anonymity</h1>
+        <!-- Add content here -->
+    </div>
+
+    <!-- L-Diversity Module -->
+    <div id="lDiversityModule" class="privacyModule" style="display:none;">
+        <button class="backButton" onclick="showModule('main')">Back to Main</button>
+        <h1>L-Diversity</h1>
+        <!-- Add content here -->
+    </div>
+
+    <!-- T-Closeness Module -->
+    <div id="tClosenessModule" class="privacyModule" style="display:none;">
+        <button class="backButton" onclick="showModule('main')">Back to Main</button>
+        <h1>T-Closeness</h1>
+        <!-- Add content here -->
+    </div>
+
+    <!-- Differential Privacy Module -->
+    <div id="differentialPrivacyModule" class="privacyModule" style="display:none;">
+        <button class="backButton" onclick="showModule('main')">Back to Main</button>
+        <h1>Differential Privacy</h1>
+        <!-- Add content here -->
     </div>
 </body>
 </html>
