@@ -60,3 +60,38 @@ button:hover {
     top: 0px; 
     right: 10px; 
 }
+
+input[type=range] {
+   -webkit-appearance: none; 
+   height: 8px; 
+   background-color: #e3f2fd; 
+   border-radius: 5px; 
+   outline: none; 
+   margin: 20px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+   -webkit-appearance: none; 
+   width: 20px; 
+   height: 20px; 
+   border-radius: 50%; 
+   background-color: #007bff; 
+   cursor: pointer; 
+}
+
+input[type=range]::-moz-range-thumb {
+   width: 20px; 
+   height: 20px; 
+   border-radius: 50%; 
+   background-color: #007bff; 
+   cursor: pointer; 
+}
+
+label {
+    font-weight: bold;
+    color: #00509e;
+}
+
+label span {
+    font-size: 1.2em;
+}
