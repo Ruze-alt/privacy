@@ -60,6 +60,12 @@ h1 {
     text-align: center;
 }
 
+.differentialPrivacyButtons{
+    display: flex; 
+    justify-content: center; 
+    gap: 5px; 
+}
+
 button {
     display: block;
     margin: 20px auto;
@@ -83,15 +89,17 @@ button:hover {
 }
 
 input[type=range] {
+   appearance: none; 
    -webkit-appearance: none; 
    height: 8px; 
    background-color: #e3f2fd; 
    border-radius: 5px; 
    outline: none; 
-   margin: 20px;
+   margin: 20px; 
 }
 
 input[type=range]::-webkit-slider-thumb {
+   appearance: none; 
    -webkit-appearance: none; 
    width: 20px; 
    height: 20px; 
