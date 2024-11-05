@@ -16,48 +16,113 @@
     </script>
 </head>
 <body>
+
+    <!-- Main Screen -->
     <div id="main">
         <h1>Privacy Rules</h1>
-        <div class="ruleSection" onclick="showModule('kAnonymityModule')">
+        <div class="ruleSection" onclick="showModule('kAnonymityMainScreen')">
             <h2>K-Anonymity</h2>
         </div>
-        <div class="ruleSection" onclick="showModule('lDiversityModule')">
+        <div class="ruleSection" onclick="showModule('lDiversityMainScreen')">
             <h2>L-Diversity</h2>
         </div>
-        <div class="ruleSection" onclick="showModule('tClosenessModule')">
+        <div class="ruleSection" onclick="showModule('tClosenessMainScreen')">
             <h2>T-Closeness</h2>
         </div>
-        <div class="ruleSection" onclick="showModule('differentialPrivacyModule')">
+        <div class="ruleSection" onclick="showModule('differentialPrivacyMainScreen')">
             <h2>Differential Privacy</h2>
         </div>
     </div>
 
-    <!-- K-Anonymity Module -->
-    <div id="kAnonymityModule" class="privacyModule" style="display:none">
-        <button class="backButton" onclick="showModule('main')">Back to Main</button>
-        <h1>K-Anonymity</h1>
-        <!-- Add content here -->
+    <!-- K-Anonymity Main Screen -->
+    <div id="kAnonymityMainScreen" class="privacyModule" style="display:none;">
+        <button class="backButton" onclick="showModule('main')">Back</button>
+        <h1>K-Anonymity Modules</h1>
+        <div class="moduleSection" onclick="showModule('kAnonymityIntro')">
+            <h2>Introduction to K-Anonymity</h2>
+        </div>
+        <!-- Add more modules here -->
+        <div class="moduleSection" onclick="showModule('kAnonymityIntro')">
+            <h2>Placeholder Module</h2>
+        </div>
+        <div class="moduleSection" onclick="showModule('kAnonymityIntro')">
+            <h2>Placeholder Module</h2>
+        </div>
     </div>
 
-    <!-- L-Diversity Module -->
-    <div id="lDiversityModule" class="privacyModule" style="display:none;">
-        <button class="backButton" onclick="showModule('main')">Back to Main</button>
-        <h1>L-Diversity</h1>
-        <!-- Add content here -->
+    <!-- K-Anonymity Introduction Module -->
+    <div id="kAnonymityIntro" class="privacyModule" style="display:none;">
+        <button class="backButton" onclick="showModule('kAnonymityMainScreen')">Back</button>
+        <h1>Introduction to K-Anonymity</h1>
+        <!-- Add lesson content here -->
     </div>
 
-    <!-- T-Closeness Module -->
-    <div id="tClosenessModule" class="privacyModule" style="display:none;">
-        <button class="backButton" onclick="showModule('main')">Back to Main</button>
-        <h1>T-Closeness</h1>
-        <!-- Add content here -->
+    <!-- L-Diversity Main Screen -->
+    <div id="lDiversityMainScreen" class="privacyModule" style="display:none;">
+        <button class="backButton" onclick="showModule('main')">Back</button>
+        <h1>L-Diversity Modules</h1>
+        <div class="moduleSection" onclick="showModule('lDiversityIntro')">
+            <h2>Introduction to L-Diversity</h2>
+        </div>
+        <!-- Add more modules here -->
+        <div class="moduleSection" onclick="showModule('lDiversityIntro')">
+            <h2>Placeholder Module</h2>
+        </div>
+        <div class="moduleSection" onclick="showModule('lDiversityIntro')">
+            <h2>Placeholder Module</h2>
+        </div>
     </div>
 
-    <!-- Differential Privacy Module -->
-    <div id="differentialPrivacyModule" class="privacyModule" style="display:none;">
-        <button class="backButton" onclick="showModule('main')">Back to Main</button>
-        <h1>Differential Privacy</h1>
-        <!-- Add content here -->
+    <!-- L-Diversity Introduction Module -->
+    <div id="lDiversityIntro" class="privacyModule" style="display:none;">
+        <button class="backButton" onclick="showModule('lDiversityMainScreen')">Back</button>
+        <h1>Introduction to L-Diversity</h1>
+        <!-- Add lesson content here -->
+    </div>
+
+    <!-- T-Closeness Main Screen -->
+    <div id="tClosenessMainScreen" class="privacyModule" style="display:none;">
+        <button class="backButton" onclick="showModule('main')">Back</button>
+        <h1>T-Closeness Modules</h1>
+        <div class="moduleSection" onclick="showModule('tClosenessIntro')">
+            <h2>Introduction to T-Closeness</h2>
+        </div>
+        <!-- Add more modules here -->
+        <div class="moduleSection" onclick="showModule('tClosenessIntro')">
+            <h2>Placeholder Module</h2>
+        </div>
+        <div class="moduleSection" onclick="showModule('tClosenessIntro')">
+            <h2>Placeholder Module</h2>
+        </div>
+    </div>
+
+    <!-- T-Closeness Introduction Module -->
+    <div id="tClosenessIntro" class="privacyModule" style="display:none;">
+        <button class="backButton" onclick="showModule('tClosenessMainScreen')">Back</button>
+        <h1>Introduction to T-Closeness</h1>
+        <!-- Add lesson content here -->
+    </div>
+
+    <!-- Differential Privacy Main Screen -->
+    <div id="differentialPrivacyMainScreen" class="privacyModule" style="display:none;">
+        <button class="backButton" onclick="showModule('main')">Back</button>
+        <h1>Differential Privacy Modules</h1>
+        <div class="moduleSection" onclick="showModule('differentialPrivacyIntro')">
+            <h2>Introduction to Differential Privacy</h2>
+        </div>
+        <!-- Add more modules here -->
+        <div class="moduleSection" onclick="showModule('differentialPrivacyIntro')">
+            <h2>Placeholder Module</h2>
+        </div>
+        <div class="moduleSection" onclick="showModule('differentialPrivacyIntro')">
+            <h2>Placeholder Module</h2>
+        </div>
+    </div>
+
+     <!-- Differential Privacy Introduction Module -->
+    <div id="differentialPrivacyIntro" class="privacyModule" style="display:none;">
+        <button class="backButton" onclick="showModule('differentialPrivacyMainScreen')">Back</button>
+        <!-- Header for Differential Privacy Intro Module-->
+        <h1>Differential Privacy: Introduction</h1>
     </div>
 </body>
-</html>
