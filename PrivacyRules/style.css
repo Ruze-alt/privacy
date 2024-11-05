@@ -25,14 +25,34 @@ h1 {
     margin-top: 15px;
     padding: 20px;
     border-radius: 8px;
-    background-color: #e3f2fd;
+    background-color: #eaf4fb; 
+    border-left: 5px solid #b0d4f1; 
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .ruleSection:hover {
-    background-color: #bbdefb;
+    background-color: #d9eaf7; 
     transform: translateY(-3px);
+}
+
+.moduleSection {
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #e3f2fd; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.moduleSection:hover {
+    background-color: #bbdefb; 
+    transform: translateY(-3px);
+}
+
+ .moduleSection h2 {
+    margin: 0;
+    text-align: center;
 }
 
 .ruleSection h2 {
@@ -57,8 +77,9 @@ button:hover {
 
 .backButton {
     position: absolute; 
-    top: 0px; 
+    top: 10px; 
     right: 10px; 
+    margin: auto;
 }
 
 input[type=range] {
