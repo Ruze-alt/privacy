@@ -7,7 +7,7 @@ function startCodapConnection() {
 
     codapInterface.init(config).then(() => {
         console.log('CODAP connection established.');
-        loadCSVData();
+        // loadCSVData();
     }).catch(msg => {
         console.error('CODAP connection error: ' + msg);
     });
@@ -15,6 +15,26 @@ function startCodapConnection() {
 
 function loadCSVData() {
     const csvURL = 'https://raw.githubusercontent.com/Ruze-alt/privacy/refs/heads/main/sample_adult_with_pii.csv';
+
+    codapInterface.sendRequest({
+        action: 'create',
+        resource: 'dataContextFromURL',
+        values: {
+            URL: csvURL,
+        }
+    }).then(response => {
+        if (response.success) {
+            console.log('CSV data loaded successfully.');
+        } else {
+            console.error('Failed to load CSV data.');
+        }
+    }).catch(error => {
+        console.error('Error loading CSV:', error);
+    });
+}
+
+function loadCSVDataIndata(datasetName) {
+    const csvURL = `../data/${datasetName}`;
 
     codapInterface.sendRequest({
         action: 'create',

@@ -81,3 +81,14 @@ button:hover {
     right: 10px; 
     margin: auto;
 }
+
+.inlineLink {
+    background-color: #e3f2fd;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.inlineLink:hover {
+    background-color: #bbdefb;
+}
