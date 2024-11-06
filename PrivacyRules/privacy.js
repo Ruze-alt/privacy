@@ -14,7 +14,7 @@ function startCodapConnection() {
 }
 
 function loadCSVData() {
-    const csvURL = 'https://raw.githubusercontent.com/Ruze-alt/privacy/refs/heads/main/sample_adult_with_pii.csv';
+    const csvURL = 'https://raw.githubusercontent.com/Ruze-alt/privacy/refs/heads/main/data/sample_adult_with_pii.csv';
 
     codapInterface.sendRequest({
         action: 'create',
@@ -34,7 +34,7 @@ function loadCSVData() {
 }
 
 function loadCSVDataIndata(datasetName) {
-    const csvURL = `../data/${datasetName}`;
+    const csvURL = `https://raw.githubusercontent.com/NianwenDan/codap-privacy/refs/heads/main/data/${datasetName}`;
 
     codapInterface.sendRequest({
         action: 'create',
