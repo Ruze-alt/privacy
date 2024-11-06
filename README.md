@@ -1,8 +1,7 @@
-# CODAP-Capstone
+# CODAP-privacy-plugin
+This CODAP plugin enhances the educational framework by adding interactive privacy visualizations. It introduces privacy rules (k-anonymity, l-diversity, t-closeness, and differential-privacy), allowing students to explore privacy in datasets. The goal is to make privacy concepts accessible through hands-on, interactive learning.
 
-**Sponsor:** Chris Bryan (cbryan16@asu.edu) <br>
-**Project Description:**
-This project focuses on developing a privacy plugin for the CODAP software platform to implement privacy-preserving algorithms (such as k-anonymity and differential privacy). The plugin will enable users to anonymize datasets and visualize the impact of these algorithms on data privacy.
+**Sponsor:** Chris Bryan (cbryan16@asu.edu)
 
 **Group Members:**
 
@@ -87,3 +86,4 @@ We follow a strict workflow to ensure code quality and maintain project integrit
 
 - **Remove Your Feature Branch After Merging:** 
   Once your PR is approved and merged using the squash and merge method, you must **delete your feature branch**. This helps to keep the repository clean. Don't worry—your branch's commit history will be preserved in the merged PR, so the work remains accessible.
+
