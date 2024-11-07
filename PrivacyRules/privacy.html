@@ -53,8 +53,27 @@
     <!-- K-Anonymity Introduction Module -->
     <div id="kAnonymityIntro" class="privacyModule" style="display:none;">
         <button class="backButton" onclick="showModule('kAnonymityMainScreen')">Back</button>
-        <h1>Introduction to K-Anonymity</h1>
         <!-- Add lesson content here -->
+        <h1>K-Anonymity: Introduction</h1>
+        
+        <p>K-Anonymity ensures that each individual cannot be distinguished from at least K-1 other individuals based on quasi-identifiers.</p>
+
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Set the level of K below. This controls the level of anonymity in the data.</li>
+            <li>Click "Apply K-Anonymity" to generalize data to ensure each record is similar to at least K-1 others.</li>
+        </ol>
+
+        <!-- Slider for K value -->
+        <input type="range" id="kSlider" min="2" max="10" step="1" value="2" oninput="updateKValue(this.value)">
+        <label for="kSlider">K Value: <span id="kValue">2</span></label>
+
+        <!-- Apply K-Anonymity Button -->
+        <button onclick="applyKAnonymity()">Apply K-Anonymity</button>
+
+        <!-- Display Results -->
+        <p><strong>Original Data:</strong> <span id="originalData">N/A</span></p>
+        <p><strong>K-Anonymized Data:</strong> <span id="kAnonymizedData">N/A</span></p>
     </div>
 
     <!-- L-Diversity Main Screen -->
