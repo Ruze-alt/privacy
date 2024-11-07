@@ -173,7 +173,59 @@
      <!-- Differential Privacy Introduction Module -->
     <div id="differentialPrivacyIntro" class="privacyModule" style="display:none;">
         <button class="backButton" onclick="showModule('differentialPrivacyMainScreen')">Back</button>
+
         <!-- Header for Differential Privacy Intro Module-->
         <h1>Differential Privacy: Introduction</h1>
+
+        <!-- Description -->
+        <p>
+            Differential Privacy is a technique used to protect individual privacy by adding random noise to data. 
+            This ensures that the privacy of individuals is preserved while still allowing useful insights to be drawn from the data. 
+            In this module, you will explore how differential privacy works on both numerical and categorical data.
+        </p>
+
+        <!-- Instructions -->
+        <h3>Instructions:</h3>
+        <ol>
+            <li>
+                Adjust the <strong>Epsilon</strong> and <strong>Sensitivity</strong> values using the sliders below. 
+                These values control the amount of noise added to protect privacy. A smaller epsilon value means more noise (higher privacy), 
+                while a larger epsilon value means less noise (lower privacy).
+            </li>
+            <br>
+            <li>
+                Click <strong>"Apply To Numerical"</strong> to apply differential privacy to a numerical query that selects all individuals 
+                whose age is greater than or equal to 40. Observe how noise affects the true count of this query.
+            </li>
+            <br>
+            <li>
+                Click <strong>"Apply To Categorical"</strong> to apply differential privacy to categorical data using the 
+                Marital Status column. Compare the original distribution of marital statuses with the noisy distribution displayed below. 
+                This will help you understand how differential privacy alters categorical data distributions.
+            </li>
+        </ol>
+
+        <!-- Sliders for Epsilon and Sensitivity -->
+        <input type="range" id="epsilonSlider" min="0.1" max="1.0" step="0.1" value="0.1" oninput="updateEpsilon(this.value)">
+        <label for="epsilonSlider">Epsilon: <span id="epsilonValue">0.1</span></label>
+
+        <!-- Sensitivity Slider (with explanation) -->
+        <input type="range" id="sensitivitySlider" min="1.0" max="10.0" step="1.0" value="1.0" oninput="updateSensitivity(this.value)">
+        <label for="sensitivitySlider">Sensitivity: <span id="sensitivityValue">1.0</span></label>
+        <p><em>Sensitivity is set to 1 for counting queries, but you can adjust it here for demonstration purposes.</em></p>
+
+        <!-- Apply Differential Privacy Buttons -->
+        <div class="differentialPrivacyButtons">
+            <button onclick="applyDifferentialPrivacy()">Apply To Numerical</button>
+            <button onclick="generateNoisyCategoryDistribution('Marital Status')">Apply To Categorical</button>
+        </div>
+
+        <!-- True and Noisy Results Display -->
+        <p><strong>True Result:</strong> <span id="trueResult">N/A</span></p>
+        <p><strong>Noisy Result:</strong> <span id="noisyResult">N/A</span></p>
+
+        <!-- Categorical Feature Display -->
+        <p><strong>Original Distribution:</strong> <span id="originalDistribution">N/A</span></p>
+        <p><strong>Noisy Category Distribution:</strong> <span id="noisyCategoryDistribution">N/A</span></p>
     </div>
 </body>
