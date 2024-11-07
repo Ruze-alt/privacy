@@ -1,0 +1,30 @@
+Mathm Alkaabi
+Approximate Differential Privacy
+Pseudocode 
+Assumptions:
+We use the Gaussian mechanism to generate noise.
+The result will be F(x) = f(x) + N(σ²), where f(x) is the function and N is the noise generated from the Gaussian distribution with center 0 and variance σ² (sigma squared).
+Sigma squared (σ²) =  2s2log(1.25δ)𝜀2
+The dataset’s attributes are real-valued and continuous.
+The failure probability (delta - δ) is set to 1n2 , where n is the size of the dataset. 
+The privacy budget (epsilon - 𝜀) is equal to or less than 1 since we use the classic Gaussian mechanism.
+Inputs: 
+f(x) - function with input dataset that needs to be privatized
+epsilon - privacy budget (𝜀)
+delta - failure probability (δ)
+s - sensitivity of function f(x)
+
+	Output: 
+F(x) (result) - Approximate differential private result of f(x)
+
+ADP( f(x), epsilon, delta, s):
+	   // 1. Calculate the variance for Gaussian noise
+	   sigmaSquared = (2 * s^2 * log(1.25 / delta)) / epsilon^2
+
+	  // 2. Get noise from the Gaussian distribution 
+	  gNoise = Gaussian(0, sqrt(sigmaSquared))
+
+	 // 3. Compute the privacy result by adding noise, and return it
+	 result = f(x) + gNoise		
+	 return result 
+Struggles: My main struggles were understanding the failure probability, where the privacy guarantees may not hold and fail, and the reasoning behind it and why it’s set as 1 / n^2, where n is the dataset size. Another struggle I had was how and why the Gaussian distribution is used (I followed the https://programming-dp.com/ch6.html# example). The actual code and initial equations weren’t difficult to understand, since it's just inputting values, but the underlying reasons why we use these equations and values to generate noise is the source of my confusion. 
