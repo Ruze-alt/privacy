@@ -16,7 +16,7 @@ function startCodapConnection() {
 
 // Function to load the CSV data from a URL
 function loadCSVData() {
-    const csvURL = 'https://raw.githubusercontent.com/Ruze-alt/privacy/refs/heads/main/sample_adult_with_pii.csv';
+    const csvURL = 'https://raw.githubusercontent.com/Ruze-alt/privacy/refs/heads/main/data/sample_adult_with_pii.csv';
 
     codapInterface.sendRequest({
         action: 'create',
