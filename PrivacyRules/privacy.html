@@ -127,15 +127,31 @@
         <h1>Differential Privacy: Introduction</h1>
 
         <!-- Description -->
-        <p>Differential Privacy ensures individual privacy by adding random noise to queries. Adjust epsilon and sensitivity values below to see how they affect the amount of noise added.</p>
+        <p>
+            Differential Privacy is a technique used to protect individual privacy by adding random noise to data. 
+            This ensures that the privacy of individuals is preserved while still allowing useful insights to be drawn from the data. 
+            In this module, you will explore how differential privacy works on both numerical and categorical data.
+        </p>
 
         <!-- Instructions -->
         <h3>Instructions:</h3>
         <ol>
-            <li>Adjust the epsilon and sensitivity values using the sliders below. These values control the amount of noise added to protect privacy.</li> <br>
-            <li>Click "Apply To Numerical" to apply differential privacy to numerical data and observe how noise affects numeric results.</li> <br>
-            <li>Click "Apply To Categorical" to apply differential privacy to categorical data (e.g., Marital Status) and display the noisy distribution.</li> <br>
-            <li>Compare the original and noisy distributions displayed below to understand how differential privacy alters data.</li> <br>
+            <li>
+                Adjust the <strong>Epsilon</strong> and <strong>Sensitivity</strong> values using the sliders below. 
+                These values control the amount of noise added to protect privacy. A smaller epsilon value means more noise (higher privacy), 
+                while a larger epsilon value means less noise (lower privacy).
+            </li>
+            <br>
+            <li>
+                Click <strong>"Apply To Numerical"</strong> to apply differential privacy to a numerical query that selects all individuals 
+                whose age is greater than or equal to 40. Observe how noise affects the true count of this query.
+            </li>
+            <br>
+            <li>
+                Click <strong>"Apply To Categorical"</strong> to apply differential privacy to categorical data using the 
+                Marital Status column. Compare the original distribution of marital statuses with the noisy distribution displayed below. 
+                This will help you understand how differential privacy alters categorical data distributions.
+            </li>
         </ol>
 
         <!-- Sliders for Epsilon and Sensitivity -->

@@ -192,7 +192,7 @@ function displayOriginalDistribution(attribute) {
 }
 
 // Function to generate a noisy distribution for a categorical attribute and display it
-function generateNoisyCategoryDistribution(attribute, iterations = 100) {
+function generateNoisyCategoryDistribution(attribute, iterations = 1000) {
     getCategoricalFeatures(attribute).then(caseFeatures => {
         const allCases = caseFeatures[0]; // All cases for this attribute
         const uniqueCategories = caseFeatures[1]; // Unique categories
@@ -209,11 +209,17 @@ function generateNoisyCategoryDistribution(attribute, iterations = 100) {
         }
 
         let noisyText = "";
+        let totalCount = "";
         for (const [category, count] of Object.entries(categoryFrequency)) {
             noisyText += `${category}: ${(count / iterations * 100).toFixed(1)}%\n`; 
         }
         
+        for (const [category, count] of Object.entries(categoryFrequency)) {
+            totalCount += `${category}: ${count}\n`;
+        }
+
         console.log(noisyText);
+        //console.log(totalCount);
         document.getElementById('noisyCategoryDistribution').textContent = noisyText;
     });
 }
