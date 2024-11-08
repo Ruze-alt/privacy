@@ -13,7 +13,8 @@ jobs:
     - name: repo-sync
       uses: repo-sync/github-sync@v2
       with:
-        source_repo: ""
-        source_branch: ""
-        destination_branch: ""
+        source_repo: "Ruze-alt/privacy"
+        source_branch: "main"
+        destination_repo: "svl-at-asu/CODAP-privacy-plugin"
+        destination_branch: "main"
         github_token: ${{ secrets.PAT }}
