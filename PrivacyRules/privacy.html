@@ -279,16 +279,18 @@
 
         <!-- Apply Differential Privacy Buttons -->
         <div class="differentialPrivacyButtons">
-            <button onclick="applyDifferentialPrivacy()">Apply To Numerical</button>
-            <button onclick="generateNoisyCategoryDistribution('Marital Status')">Apply To Categorical</button>
+            <button onclick="generateNumericalNoise()">Apply To Numerical</button>
+            <button onclick="generateCategoricalNoise('Marital Status')">Apply To Categorical</button>
         </div>
 
         <!-- True and Noisy Results Display -->
-        <p><strong>True Result:</strong> <span id="trueResult">N/A</span></p>
+        <h3>Numerical Results</h3>
+        <p><strong>Original Result:</strong> <span id="originalResult">N/A</span></p>
         <p><strong>Noisy Result:</strong> <span id="noisyResult">N/A</span></p>
-
+        <br>
         <!-- Categorical Feature Display -->
-        <p><strong>Original Distribution:</strong> <span id="originalDistribution">N/A</span></p>
-        <p><strong>Noisy Category Distribution:</strong> <span id="noisyCategoryDistribution">N/A</span></p>
+        <!-- Single Table Displaying Both Original and Noisy Distributions -->
+        <h3>Categorical Distribution Table</h3>
+        <div id="distributionTable"></div>
     </div>
 </body>
