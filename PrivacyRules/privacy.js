@@ -315,6 +315,138 @@ function generateCategoricalNoise(attribute, iterations = 1000) {
     });
 }
 
+// Function to reset everything in the module
+function resetModule(attribute) {
+    // Step 1: Reset Noise column values back to 0 and NoisyCategorical back to original values
+    getAllCases().then(cases => {
+        getCategoricalFeatures(attribute).then(caseFeatures => {
+            const allCases = caseFeatures[0]; // All cases for this attribute
+
+            // Combine Noise = 0 and reset NoisyCategorical to original values
+            const updatedCases = cases.map(item => ({
+                id: item.case.id,
+                values: { Noise: 0, // Reset Noise values
+                        [`Noisy ${attribute}`]: item.case.values[attribute] } // Set Noisy [attribute] to original value
+            }));
+
+            // Update dataset with combined Noise and NoisyCategorical reset
+            codapInterface.sendRequest({
+                action: 'update',
+                resource: 'dataContext[lite_adult_with_pii].collection[cases].case',
+                values: updatedCases
+            }).then(response => {
+                if (response.success) {
+                    console.log('Noise and Noisy categorical values reset successfully.');
+
+                    // Step 2: Reset colors in table (both original and noisy columns back to blue)
+                    const uniqueCategories = caseFeatures[1]; 
+                    uniqueCategories.forEach(category => {
+                        document.getElementById(`noisy-${category}`).style.color = "blue"; 
+                    });
+                    
+                    getTrueCount().then(trueCount => {
+                        document.getElementById('noisyResult').textContent = trueCount;
+                        document.getElementById('noisyResult').style.color = "blue";
+                    });
+
+                    codapInterface.sendRequest({
+                        action: 'notify',
+                        resource: 'component[NumericalGraph]',  
+                        values: {
+                            request: 'autoScale'
+                        }
+                    }).then(response => {
+                        if (response.success) {
+                            console.log('Graph autoscaled successfully.');
+                        } else {
+                            console.error('Failed to autoscale graph.');
+                        }
+                    });
+
+                } else {
+                    console.error('Failed to reset Noise and Noisy categorical values.');
+                }
+            });
+        });
+    }); 
+}
+
+// Function to reset everything in the module
+function resetModule(attribute) {
+    // Step 1: Reset Noise column values back to 0 and NoisyCategorical back to original values
+    getAllCases().then(cases => {
+        getCategoricalFeatures(attribute).then(caseFeatures => {
+            const allCases = caseFeatures[0]; // All cases for this attribute
+            const uniqueCategories = caseFeatures[1]; // Unique categories
+
+            // Combine Noise = 0 and reset NoisyCategorical to original values
+            const updatedCases = cases.map(item => ({
+                id: item.case.id,
+                values: { 
+                    Noise: 0, // Reset Noise values
+                    [`Noisy ${attribute}`]: item.case.values[attribute] // Set Noisy [attribute] back to original value
+                }
+            }));
+
+            // Update dataset with combined Noise and NoisyCategorical reset
+            codapInterface.sendRequest({
+                action: 'update',
+                resource: 'dataContext[lite_adult_with_pii].collection[cases].case',
+                values: updatedCases
+            }).then(response => {
+                if (response.success) {
+                    console.log('Noise and Noisy categorical values reset successfully.');
+
+                    // Autosscale after resetting numerical graph
+                    codapInterface.sendRequest({
+                        action: 'notify',
+                        resource: 'component[NumericalGraph]',  
+                        values: {
+                            request: 'autoScale'
+                        }
+                    }).then(response => {
+                        if (response.success) {
+                            console.log('Graph autoscaled successfully.');
+                        } else {
+                            console.error('Failed to autoscale graph.');
+                        }
+                    });
+                } else {
+                    console.error('Failed to reset Noise and Noisy categorical values.');
+                }
+            });
+
+            // Step 2: Reset colors in table and numerical results(both original and noisy columns back to blue)
+            const normalizedOriginalDistribution = {};
+            const totalCases = allCases.length;
+
+            // Calculate original distribution percentages again
+            uniqueCategories.forEach(category => {
+                const originalCount = score(allCases, category)*1000;
+                normalizedOriginalDistribution[category] = ((originalCount / totalCases) * 100).toFixed(1) + '%';
+            });
+
+            // Update table with original percentages and reset colors
+            uniqueCategories.forEach(category => {
+                document.getElementById(`noisy-${category}`).textContent = normalizedOriginalDistribution[category]; 
+                document.getElementById(`noisy-${category}`).style.color = "blue"; 
+            });
+
+            // Reset NoisyResult
+            getTrueCount().then(trueCount => {
+                document.getElementById('noisyResult').textContent = trueCount;
+                document.getElementById('noisyResult').style.color = "blue";
+            });
+
+            // Step 3: Reset sliders (Epsilon and Sensitivity) back to initial values
+            document.getElementById('epsilonSlider').value = 0.1; // Reset slider position for epsilon
+            document.getElementById('epsilonValue').textContent = '0.1'; // Reset displayed value for epsilon
+            document.getElementById('sensitivitySlider').value = 1.0; // Reset slider position for sensitivity
+            document.getElementById('sensitivityValue').textContent = '1.0'; // Reset displayed value for sensitivity
+        });
+    }); 
+}
+
 // Function to open a graph in CODAP
 function openGraph(title, xAttributeName, yAttributeName, dataContext) {
     const graphConfig = {
