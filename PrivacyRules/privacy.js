@@ -48,8 +48,8 @@ function showModule(moduleID) {
         getTrueCount().then(trueCount => {
             document.getElementById('originalResult').textContent = trueCount;
             document.getElementById('noisyResult').textContent = trueCount;
-            document.getElementById('originalResult').style.color = "blue";
-            document.getElementById('noisyResult').style.color = "blue";
+            document.getElementById('originalResult').style.color = "#00509e";
+            document.getElementById('noisyResult').style.color = "#00509e";
         });
 
         // Step 2: Initialize Noise and NoisyAge attributes, then open numerical graph
@@ -341,12 +341,12 @@ function resetModule(attribute) {
                     // Step 2: Reset colors in table (both original and noisy columns back to blue)
                     const uniqueCategories = caseFeatures[1]; 
                     uniqueCategories.forEach(category => {
-                        document.getElementById(`noisy-${category}`).style.color = "blue"; 
+                        document.getElementById(`noisy-${category}`).style.color = "#00509e"; 
                     });
                     
                     getTrueCount().then(trueCount => {
                         document.getElementById('noisyResult').textContent = trueCount;
-                        document.getElementById('noisyResult').style.color = "blue";
+                        document.getElementById('noisyResult').style.color = "#00509e";
                     });
 
                     codapInterface.sendRequest({
@@ -429,13 +429,13 @@ function resetModule(attribute) {
             // Update table with original percentages and reset colors
             uniqueCategories.forEach(category => {
                 document.getElementById(`noisy-${category}`).textContent = normalizedOriginalDistribution[category]; 
-                document.getElementById(`noisy-${category}`).style.color = "blue"; 
+                document.getElementById(`noisy-${category}`).style.color = "#00509e"; 
             });
 
             // Reset NoisyResult
             getTrueCount().then(trueCount => {
                 document.getElementById('noisyResult').textContent = trueCount;
-                document.getElementById('noisyResult').style.color = "blue";
+                document.getElementById('noisyResult').style.color = "#00509e";
             });
 
             // Step 3: Reset sliders (Epsilon and Sensitivity) back to initial values
@@ -591,7 +591,7 @@ function displayOriginalDistribution(attribute) {
         let tableHTML = "<table class='distribution-table'><tr><th>Category</th><th>Original %</th><th>Noisy %</th></tr>";
         sortedCategoriesAlphabetically.forEach(category => {
             const percentage = normalizedOriginalDistribution[category];
-            tableHTML += `<tr><td>${category}</td><td style="color: blue;">${percentage}</td><td id="noisy-${category}" style="color: blue;">${percentage}</td></tr>`;
+            tableHTML += `<tr><td>${category}</td><td style="color: #00509e;">${percentage}</td><td id="noisy-${category}" style="color: #00509e;">${percentage}</td></tr>`;
         });
         tableHTML += "</table>";
 
