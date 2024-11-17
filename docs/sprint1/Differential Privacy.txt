@@ -1,0 +1,108 @@
+﻿Differential Privacy Research:
+
+
+Access to a statistical database should not enable one to learn anything about an individual that could not be learned without access.
+
+
+2 natural models for privacy mechanisms: interactive and non-interactive
+* Non-interactive setting, a data collector publishes a “sanitized” version of the collected data. Where well-known identifiers are perturbed and or sub-sampled.
+* Interactive setting, a data collector provides an interface through which users may pose queries about the data, and get (possibly noisy) answers.
+
+
+Differential Privacy aims to nominally increase the risk of privacy breaches, while maintaining the integrity of the dataset. The goal is not absolute protection rather a guarantee that an individual's participation (or lack thereof) should not be the primary cause if auxiliary information leads to a breach. Therefore, no significant advantage in hiding or misrepresenting one’s data.
+
+
+The mechanism works by adding appropriately chosen random noise to the answer a = f(X), where f is the query function and X is the database; thus the query functions may operate on the entire database at once.
+
+
+Suppose a query function requests the median of each column. The response is a noisy version of the medians. Also if a second query, which is a product of the response to the first query, is requested. The query then becomes a function not only of the database but also of the noise added by the privacy mechanism in responding to the first query.
+
+
+The amount of noise is based on the sensitivity of the query function, which measures the largest possible impact that changing one individual’s data can have on the output.
+* For queries with small sensitivity (like counting queries), less noise needs to be added to protect privacy, because a single individual’s contribution to the query result is minimal
+
+
+Adaptive Adversaries can change their strategy based on the responses it has already received. Thus to combat this the exponential noise that is added based on the sensitivity of the query strategy provides differential privacy.
+
+
+Couple ways to add noise to a dataset is Laplacian Noise and Gaussian Noise
+
+
+// Function to apply differential privacy by adding noise
+function applyDifferentialPrivacy(dataset, epsilon):
+    // Step 1: Initialize empty list to store the noisy dataset
+    noisyDataset = []
+
+
+    // Step 2: Iterate through each value in the dataset
+    for each value in dataset:
+        // Step 3: Generate noise using the Laplace mechanism
+        noise = generateLaplaceNoise(epsilon)
+
+
+        // Step 4: Add noise to the original value
+        noisyValue = value + noise
+
+
+        // Step 5: Add the noisy value to the noisyDataset list
+        noisyDataset.append(noisyValue)
+
+
+    // Step 6: Return the dataset with added noise
+    return noisyDataset
+
+
+// Function to generate Laplace noise
+function generateLaplaceNoise(epsilon):
+    // Step 1: Generate a random value between -1 and 1 from a uniform distribution
+    uniformRandom = getUniformRandomValue(-1, 1)
+
+
+    // Step 2: Compute Laplace noise using epsilon
+    laplaceNoise = (-1 / epsilon) * sign(uniformRandom) * log(1 - 2 * abs(uniformRandom))
+
+
+    // Step 3: Return the generated noise
+    return laplaceNoise
+
+
+
+Overview:
+The program applies differential privacy to a dataset by adding random noise to each value. The noise is generated using the Laplace mechanism, which ensures that the noise level depends on the privacy parameter epsilon. Smaller values of epsilon provide more privacy by adding more noise, while larger values reduce the noise and provide less privacy.
+
+
+ Functions:
+
+
+1. applyDifferentialPrivacy(dataset, epsilon):
+   * Purpose: Adds noise to each element of a dataset to protect individual data privacy.
+   * Parameters:
+* dataset: The original dataset (a list or collection of numerical values).
+* epsilon: The privacy budget, which controls the tradeoff between privacy and accuracy.
+   * Steps:
+      1. Initializes an empty list noisyDataset to hold the values with added noise.
+      2. Iterates over each value in the original dataset.
+      3. For each value, it generates Laplace noise based on the provided epsilon. 
+      4. Adds the generated noise to the current value and appends the result to noisyDataset.
+      5. Returns the noisy dataset once all values have been processed.
+2. generateLaplaceNoise(epsilon):
+* Purpose: Generates random noise following a Laplace distribution, based on the privacy budget epsilon.
+* Steps:
+   1. Generates a uniform random value between -1 and 1.
+   2. Computes the Laplace noise using the formula:
+
+   3. Returns the computed noise value.
+Parameters:
+* Epsilon (ε): A crucial parameter in differential privacy. It controls how much noise is added to the dataset. Lower values of epsilon result in higher noise, increasing privacy at the cost of data accuracy. A higher epsilon value provides more accurate results but decreases privacy.
+  
+Use Case:
+* This program can be used when publishing datasets that contain sensitive information. By adding controlled noise, it ensures that individual records cannot be easily identified, thus maintaining user privacy while allowing useful insights to be drawn from the overall dataset.
+
+
+Key Concepts:
+1. Laplace Mechanism: A common method used in differential privacy to add noise based on the Laplace distribution. It ensures that the amount of noise is proportional to the privacy budget.
+2.  Differential Privacy: A framework that aims to provide privacy guarantees when sharing data by ensuring that any single individual's presence or absence in the dataset does not significantly affect the outcome of any analysis.
+
+
+Notes:
+The effectiveness of this approach depends on the choice of epsilon. Choosing an appropriate epsilon value is critical to maintaining a balance between privacy and the utility of the dataset.

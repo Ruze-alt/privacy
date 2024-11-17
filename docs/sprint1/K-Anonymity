@@ -1,0 +1,34 @@
+Tejovrash Acharya:
+K-Anonymity -
+Pseudocode
+# Input dataset
+dataset = [
+    {“age”: 25, “preTestScore”: 80, “postTestScore”: 85},
+    {“age”: 25, “preTestScore”: 90, “postTestScore”: 88},
+    {“age”: 30, “preTestScore”: 70, “postTestScore”: 75},
+    {“age”: 35, “preTestScore”: 60, “postTestScore”: 65}]
+# Define the quasi-identifier
+quasi_identifier = "age"
+# Set the K value (e.g., 2 for 2-anonymity)
+k_value = 2
+# Function to check K-anonymity
+FUNCTION check_k_anonymity(dataset, quasi_identifier, k_value):
+    # Create a dictionary to count occurrences of each age
+    age_count = {}
+    # Loop through the dataset to count each age
+    FOR each record in dataset:
+        age = record[quasi_identifier]
+        IF age not in age_count:
+            age_count[age] = 0
+        age_count[age] = age_count[age] + 1
+    # Check if each age group has at least k occurrences
+    FOR each age in age_count:
+        IF age_count[age] < k_value:
+            RETURN False  # Not K-anonymous
+    RETURN True  # K-anonymous
+# Check if the dataset satisfies K-anonymity
+result = check_k_anonymity(dataset, quasi_identifier, k_value)
+# Output the result
+PRINT result
+
+Struggles: One of the main struggles I encountered with K-anonymity was figuring out how to group data properly and ensure that each group had enough people in it. I got confused while picking the right attribute(like age) as a quasi-identifier because if there aren’t enough people with the same value, the dataset fails the check, making it hard to keep things private. 

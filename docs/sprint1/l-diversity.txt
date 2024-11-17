@@ -1,0 +1,44 @@
+# L-diversity Pseudocode:
+
+dataset = [
+{‘age’: 25, ‘postal_code’: 12345, ‘disease’: ‘flu’},
+{‘age’: 25, ‘postal_code’: 12345, ‘disease’: ‘cold’},
+{‘age’: 30, ‘postal_code’: 67890, ‘disease’: ‘allergy’},
+{‘age’: 30, ‘postal_code’: 67890, ‘disease’: ‘flu’},
+{‘age’: 35, ‘postal_code’: 54321, ‘disease’: ‘cold’},
+{‘age’: 35, ‘postal_code’: 54321, ‘disease’: ‘allergy’},
+{‘age’: 35, ‘postal_code’: 54321, ‘disease’: ‘flu’}
+]
+
+l_diversity(dataset, quasi_identifiers, sensitive_attr, l):
+	# Step 1: Group data into equivalence classes based on qis
+	classes = groupby(quasi_identifiers, dataset)
+	# Step 2: Initialize list for valid equivalence classes
+	valid_classes = []
+	# Step 3: For each class, check diversity of sensitive attr
+	for class in classes:
+		# Extract sensitive attribute value for the class
+		sensitive_vals = get_sensitive_vals(class, sensitive_attr)
+
+		# Step 4: Check the diversity of the sensitive attribute
+		if count_unique_vals(sensitive_vals) >= l:
+			# Step 5: If class is l-diverse, add it to list
+			valid_classes.append(class)
+
+	# Step 6: Return the modified dataset with l-diverse equiv classes
+	return merge_classes(valid_classes)
+
+
+# Helper functions
+
+count_unique_vals(values):
+	return len(set(values))
+# Example
+
+print(l_diversity(dataset, [‘age’, ‘postal_code’], ‘disease’, 3))
+
+Output: [‘class_3’]
+
+print(l_diversity(dataset, [‘age’, ‘postal_code’], ‘disease’, 3))
+
+Output: [‘class_1’, ‘class_2’, ‘class_3’]
