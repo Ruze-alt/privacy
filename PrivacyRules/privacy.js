@@ -136,13 +136,6 @@ function generateNumericalNoise() {
     });
 }
 
-// Function to generate Laplace noise for a given sensitivity and epsilon
-function laplaceNoise(sensitivity, epsilon) {
-    const scale = sensitivity / epsilon;
-    const u = Math.random() - 0.5;
-    return -scale * Math.sign(u) * Math.log(1 - 2 * Math.abs(u));
-}
-
 // Function to get all cases 
 function getAllCases() {
     return codapInterface.sendRequest({
@@ -598,15 +591,6 @@ function displayOriginalDistribution(attribute) {
         // Display the table in the HTML
         document.getElementById('distributionTable').innerHTML = tableHTML;
     });
-}
-
-// Scoring function for categories (frequency)
-function score(data, option) {
-    const counts = data.reduce((acc, value) => {
-        acc[value] = (acc[value] || 0) + 1;
-        return acc;
-    }, {});
-    return counts[option] || 0; // Return frequency of the option
 }
 
 // Scoring Function for Categories (Frequency)
