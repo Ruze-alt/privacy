@@ -1,5 +1,5 @@
 Age,Gender,ZipCode,Disease
-2*,Male,476**,Heart Disease
+2*,Male,476**,Flu
 2*,Female,476**,Heart Disease
 2*,Female,476**,Heart Disease
 >40,Male,4790*,Cancer
