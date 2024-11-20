@@ -1,0 +1,13 @@
+Age,Gender,ZipCode,Disease
+25,Female,12345,Diabetes
+29,Male,12345,Hypertension
+31,Female,12345,Flu
+29,Female,12345,Diabetes
+35,Male,45678,Asthma
+38,Female,45678,Asthma
+37,Male,45678,Hypertension
+40,Male,45678,Diabetes
+50,Female,78901,Flu
+52,Male,78901,Diabetes
+55,Female,78901,Cancer
+53,Male,78901,Cancer

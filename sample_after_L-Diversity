@@ -1,0 +1,13 @@
+Age,Gender,ZipCode,Disease
+20-29,Female,123**,Diabetes
+20-29,Male,123**,Hypertension
+30-39,Female,123**,Flu
+20-29,Female,123**,Diabetes
+30-39,Male,456**,Asthma
+30-39,Female,456**,Asthma
+30-39,Male,456**,Hypertension
+40-49,Male,456**,Diabetes
+50-59,Female,789**,Flu
+50-59,Male,789**,Diabetes
+50-59,Female,789**,Cancer
+50-59,Male,789**,Cancer
