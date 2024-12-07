@@ -116,6 +116,10 @@ input[type=range]::-moz-range-thumb {
    cursor: pointer; 
 }
 
+.slider-description {
+    margin-left: 20px; 
+}
+
 label {
     font-weight: bold;
     color: #00509e;
