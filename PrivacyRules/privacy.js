@@ -47,12 +47,13 @@ function showModule(moduleID) {
     if (moduleID === 'differentialPrivacyMainScreen' && !differentialDataLoaded) {
         console.log('Loading differential data...');
         loadCSVDataInData('lite_adult_with_pii.csv');
-        differentialDataLoaded = true; // Set differentialDataLoaded to true after loading
+        differentialDataLoaded = true; 
         console.log('Differential data loaded:', differentialDataLoaded);
     }
 
+    // Sets the differential privacy introduction module up
     if (moduleID === 'differentialPrivacyIntro') {
-        const attributeName = 'Marital Status';
+        const attributeName = 'Marital Status'; // Set attribute to be used for categorical application
 
         // Step 1: Get true count and display it
         getTrueCount().then(trueCount => {
@@ -72,12 +73,10 @@ function showModule(moduleID) {
             displayOriginalDistribution(attributeName);
             return initializeNoisyCategorical(attributeName); 
         }).then(() => {
-            // Step 4: Get sorted categories and open both original and noisy categorical graphs with consistent ordering
+            // Step 4: Get sorted categories and open both original and noisy categorical graphs
             getCategoricalFeatures(attributeName).then(caseFeatures => {
-                const uniqueCategories = caseFeatures[1]; // Unique categories
-                const sortedCategories = uniqueCategories.sort(); // Sort alphabetically or by frequency
-
-                // Open both original and noisy categorical graphs with sorted categories
+                const uniqueCategories = caseFeatures[1]; 
+                const sortedCategories = uniqueCategories.sort(); 
                 openCategoricalGraph(attributeName, sortedCategories);
             });
         }).catch(error => {
@@ -101,9 +100,10 @@ function generateNumericalNoise() {
     const epsilon = parseFloat(document.getElementById('epsilonValue').textContent);
     const sensitivity = parseFloat(document.getElementById('sensitivityValue').textContent);
 
-    getTrueCount().then(trueCount => { // Get the true count
-        const noisyCount = trueCount + laplaceNoise(sensitivity, epsilon); // Add noise to the true count
-        document.getElementById('noisyResult').textContent = noisyCount.toFixed(2); // Display the noisy count
+    // Get the true count and add noise to it
+    getTrueCount().then(trueCount => { 
+        const noisyCount = trueCount + laplaceNoise(sensitivity, epsilon); 
+        document.getElementById('noisyResult').textContent = noisyCount.toFixed(2); 
         document.getElementById('noisyResult').style.color = "red";
     });
 
@@ -126,6 +126,7 @@ function generateNumericalNoise() {
             if (response.success) {
                 console.log('Noise values updated successfully.');
 
+                // Autoscale the graph after updating Noise values
                 codapInterface.sendRequest({
                     action: 'notify',
                     resource: 'component[NumericalGraph]',  
@@ -139,6 +140,7 @@ function generateNumericalNoise() {
                         console.error('Failed to autoscale graph.');
                     }
                 });
+
             } else {
                 console.error('Failed to update Noise values.');
             }
@@ -153,9 +155,9 @@ function getAllCases() {
         resource: 'dataContext[lite_adult_with_pii].collection[cases].allCases'
     }).then(response => {
         if (response.success) {
-            const cases = response.values.cases;  // Access the 'cases' array inside 'values'
+            const cases = response.values.cases;  
             //console.log(cases);
-            return cases;  // Return the cases array
+            return cases; 
         } else {
             console.error('Failed to retrieve cases.');
             return [];  // Return an empty array in case of failure
@@ -266,10 +268,10 @@ function initializeNoisyCategorical(attribute) {
 }
 
 // Function to apply differential privacy, update Noisy [attribute] using Exponential Mechanism, and update noisy column in the table
-function generateCategoricalNoise(attribute, iterations = 1000) {
+function generateCategoricalNoise(attribute, iterations=1000) {
     getCategoricalFeatures(attribute).then(caseFeatures => {
-        const allCases = caseFeatures[0]; // All cases for this attribute
-        const uniqueCategories = caseFeatures[1]; // Unique categories
+        const allCases = caseFeatures[0]; 
+        const uniqueCategories = caseFeatures[1]; 
 
         // Calculate scores (frequencies) for each unique category
         const scores = uniqueCategories.map(category => score(allCases, category));
@@ -323,64 +325,8 @@ function resetModule(attribute) {
     // Step 1: Reset Noise column values back to 0 and NoisyCategorical back to original values
     getAllCases().then(cases => {
         getCategoricalFeatures(attribute).then(caseFeatures => {
-            const allCases = caseFeatures[0]; // All cases for this attribute
-
-            // Combine Noise = 0 and reset NoisyCategorical to original values
-            const updatedCases = cases.map(item => ({
-                id: item.case.id,
-                values: { Noise: 0, // Reset Noise values
-                        [`Noisy ${attribute}`]: item.case.values[attribute] } // Set Noisy [attribute] to original value
-            }));
-
-            // Update dataset with combined Noise and NoisyCategorical reset
-            codapInterface.sendRequest({
-                action: 'update',
-                resource: 'dataContext[lite_adult_with_pii].collection[cases].case',
-                values: updatedCases
-            }).then(response => {
-                if (response.success) {
-                    console.log('Noise and Noisy categorical values reset successfully.');
-
-                    // Step 2: Reset colors in table (both original and noisy columns back to blue)
-                    const uniqueCategories = caseFeatures[1]; 
-                    uniqueCategories.forEach(category => {
-                        document.getElementById(`noisy-${category}`).style.color = "#00509e"; 
-                    });
-                    
-                    getTrueCount().then(trueCount => {
-                        document.getElementById('noisyResult').textContent = trueCount;
-                        document.getElementById('noisyResult').style.color = "#00509e";
-                    });
-
-                    codapInterface.sendRequest({
-                        action: 'notify',
-                        resource: 'component[NumericalGraph]',  
-                        values: {
-                            request: 'autoScale'
-                        }
-                    }).then(response => {
-                        if (response.success) {
-                            console.log('Graph autoscaled successfully.');
-                        } else {
-                            console.error('Failed to autoscale graph.');
-                        }
-                    });
-
-                } else {
-                    console.error('Failed to reset Noise and Noisy categorical values.');
-                }
-            });
-        });
-    }); 
-}
-
-// Function to reset everything in the module
-function resetModule(attribute) {
-    // Step 1: Reset Noise column values back to 0 and NoisyCategorical back to original values
-    getAllCases().then(cases => {
-        getCategoricalFeatures(attribute).then(caseFeatures => {
-            const allCases = caseFeatures[0]; // All cases for this attribute
-            const uniqueCategories = caseFeatures[1]; // Unique categories
+            const allCases = caseFeatures[0]; 
+            const uniqueCategories = caseFeatures[1]; 
 
             // Combine Noise = 0 and reset NoisyCategorical to original values
             const updatedCases = cases.map(item => ({
@@ -442,15 +388,15 @@ function resetModule(attribute) {
             });
 
             // Step 3: Reset sliders (Epsilon and Sensitivity) back to initial values
-            document.getElementById('epsilonSlider').value = 0.1; // Reset slider position for epsilon
-            document.getElementById('epsilonValue').textContent = '0.1'; // Reset displayed value for epsilon
-            document.getElementById('sensitivitySlider').value = 1.0; // Reset slider position for sensitivity
-            document.getElementById('sensitivityValue').textContent = '1.0'; // Reset displayed value for sensitivity
+            document.getElementById('epsilonSlider').value = 0.1; 
+            document.getElementById('epsilonValue').textContent = '0.1'; 
+            document.getElementById('sensitivitySlider').value = 1.0; 
+            document.getElementById('sensitivityValue').textContent = '1.0'; 
         });
     }); 
 }
 
-// Function to open a graph in CODAP
+// Function to open a numerical graph in CODAP
 function openGraph(title, xAttributeName, yAttributeName, dataContext) {
     const graphConfig = {
         type: 'graph',
@@ -462,6 +408,7 @@ function openGraph(title, xAttributeName, yAttributeName, dataContext) {
         dataContext : dataContext
     };
 
+    // Create numerical graph
     codapInterface.sendRequest({
         action : 'create',
         resource : 'component',
@@ -484,9 +431,8 @@ function openCategoricalGraph(attribute, sortedCategories) {
         title: `Original ${attribute} Distribution`,
         dimensions: { width: 500, height: 400 },
         xAttributeName: attribute,      // X-axis is Original Category (e.g., Marital Status)
-        yAttributeName: 'percentage',   // Y-axis will show percentages
         dataContext: 'lite_adult_with_pii',
-        xAxisCategories: sortedCategories // Ensure consistent category order
+        xAxisCategories: sortedCategories 
     };
 
     // Create graph for noisy distribution
@@ -496,9 +442,8 @@ function openCategoricalGraph(attribute, sortedCategories) {
         title: `Noisy ${attribute} Distribution`,
         dimensions: { width: 500, height: 400 },
         xAttributeName: `Noisy ${attribute}`,      // X-axis is Noisy Category (e.g., Noisy Marital Status)
-        yAttributeName: 'percentage',   // Y-axis will show percentages
         dataContext: 'lite_adult_with_pii',
-        xAxisCategories: sortedCategories // Ensure consistent category order
+        xAxisCategories: sortedCategories
     };
 
     // Create original distribution graph
@@ -515,25 +460,26 @@ function openCategoricalGraph(attribute, sortedCategories) {
                 action: 'create',
                 resource: 'component',
                 values: graphConfigNoisy
+            }).then(response => {
+                if (response.success) {
+                    console.log(`${attribute} Noisy Distribution graph created successfully.`);
+                } else {
+                    console.error(`Failed to create ${attribute} Noisy Distribution graph.`);
+                }
             });
-            
+
         } else {
             console.error(`Failed to create ${attribute} Original Distribution graph.`);
         }
-    }).then(response => {
-        if (response.success) {
-            console.log(`${attribute} Noisy Distribution graph created successfully.`);
-        } else {
-            console.error(`Failed to create ${attribute} Noisy Distribution graph.`);
-        }
-    });
+    })
 }
 
 // Function to retrieve the true count of cases
 function getTrueCount() {
+    // Retrieve true count of cases using query Age >= 40
     return codapInterface.sendRequest({
         action: 'get',
-        resource: 'dataContext[lite_adult_with_pii].collection[cases].caseFormulaSearch[Age >= 40]'
+        resource: 'dataContext[lite_adult_with_pii].collection[cases].caseFormulaSearch[Age >= 40]' 
     }).then(response => {
         if (response.success) {
             return response.values.length;
