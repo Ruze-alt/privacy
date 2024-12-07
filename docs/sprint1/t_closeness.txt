@@ -1,0 +1,48 @@
+data = [
+    { 'name' : 'Alice', 'age' : 29, 'zip' : 47677, 'salary' : 3000, 'disease': 'Gastric ulcer'},
+    { 'name' : 'Bob', 'age' : 22, 'zip' : 47602, 'salary' : 4000, 'disease': 'Gastritis'},
+    { 'name' : 'Charly', 'age' : 27, 'zip' : 47678, 'salary' : 5000, 'disease': 'Stomach cancer'},
+    { 'name' : 'Dave', 'age' : 43, 'zip' : 47905, 'salary' : 6000, 'disease': 'Gastritis'},
+    { 'name' : 'Eve', 'age' : 52, 'zip' : 47909, 'salary' : 11000, 'disease': 'Flu'},
+    { 'name' : 'Ferris', 'age' : 47, 'zip' : 47906, 'salary' : 8000, 'disease': 'Bronchitis'},
+    { 'name' : 'George', 'age' : 30, 'zip' : 47605, 'salary' : 7000, 'disease': 'Bronchitis'},
+    { 'name' : 'Harvey', 'age' : 36, 'zip' : 47673, 'salary' : 9000, 'disease': 'Pneumonia'},
+    { 'name' : 'Iris', 'age' : 32, 'zip' : 47607, 'salary' : 10000, 'disease': 'Stomach cancer'}
+]
+
+
+def enforce_t_closeness(data, sensitive_attribute, quasi_identifiers, t_threshold):
+    '''
+    Enforce T-Closeness on a dataset.
+
+    @param data: The dataset to anonymize
+    @param sensitive_attribute: The name of the sensitive attribute
+    @param quasi_identifiers: A list of the names of the quasi-identifiers
+    @param t_threshold: The T-Closeness threshold
+
+    @return: The anonymized dataset
+    '''
+    # Calculate global distribution of the sensitive attribute
+    global_distribution = calculate_distribution(data, sensitive_attribute)
+    
+    # Group data into equivalence classes based on quasi-identifiers
+    equivalence_classes = group_by_quasi_identifiers(data, quasi_identifiers)
+    
+    # Check each equivalence class for T-Closeness
+    for key, equivalence_class in equivalence_classes.items():
+        # Calculate the class distribution for the sensitive attribute
+        class_distribution = calculate_distribution(equivalence_class, sensitive_attribute)
+        
+        # Calculate the distance between the class distribution and the global distribution
+        distance = calculate_distance(class_distribution, global_distribution)
+        
+        # If the distance exceeds the threshold, anonymize the class
+        if distance > t_threshold:
+            anonymize_class(equivalence_class, sensitive_attribute, generalization_scheme_disease)
+    
+    # Reconstruct the anonymized dataset
+    anonymized_data = []
+    for equivalence_class in equivalence_classes.values():
+        anonymized_data.extend(equivalence_class)
+    
+    return anonymized_data

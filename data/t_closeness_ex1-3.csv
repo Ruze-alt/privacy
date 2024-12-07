@@ -1,0 +1,10 @@
+Age,ZIP,Salary,Disease
+20-29,476**,3K,Gastric ulcer
+20-29,476**,4K,Gastritis
+20-29,476**,5K,Stomach cancer
+>40,4790*,6K,Gastritis
+>40,4790*,11K,Flu
+>40,4790*,8K,Bronchitis
+30-39,476**,7K,Bronchitis
+30-39,476**,9K,Pneumonia
+30-39,476**,10K,Stomach cancer

@@ -591,4 +591,3 @@ function applyLDiversity() {
     }
 
     alert(`Applying L-Diversity with Level: ${diversityLevel} and Attribute Count: ${attributeCount}`)
-}
