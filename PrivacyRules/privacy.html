@@ -65,8 +65,8 @@
             <h2>Introduction to L-Diversity</h2>
         </div>
         <!-- Add more modules here -->
-        <div class="moduleSection" onclick="showModule('lDiversityIntro')">
-            <h2>Placeholder Module</h2>
+        <div class="moduleSection" onclick="showModule('ApplyLDiverity')">
+            <h2>Apply L-Diversity</h2>
         </div>
         <div class="moduleSection" onclick="showModule('lDiversityIntro')">
             <h2>Placeholder Module</h2>
@@ -77,7 +77,70 @@
     <div id="lDiversityIntro" class="privacyModule" style="display:none;">
         <button class="backButton" onclick="showModule('lDiversityMainScreen')">Back</button>
         <h1>Introduction to L-Diversity</h1>
-        <!-- Add lesson content here -->
+        <div>
+            <p>
+                <h2>What is L-Diversity?</h2>
+                L-Diversity is a privacy rule that helps protect people's information by making sure that each group
+                of information has different types of secrets in it. This way, if someone tries to figure out who is
+                in a bucket, it's harder because there are different types of answers mixed together.
+            </p>
+            <p>
+                For Example:
+                    <ul>
+                        <li>
+                            Let's say we have a bucket of health data that includes five people
+                        </li>
+                        <li>
+                            instead of having just one illness type in that bucket (like if everyone has the same cold),
+                            L-Diversity says we should have several differnet illnesses (like a cold, allergies, a sore
+                            throat, etc.).
+                        </li>
+                        <li>
+                            This way, even if you know someone in the group has a cold, you won't know who it is, because
+                            there are other possibilities too.
+                        </li>
+                    </ul>
+            </p>
+            <p>
+                <b>Why does L-Diversity matter?</b> it is important because it makes it much harder for anyone looking at
+                the data to figure out personal details about someone. Even if they try, they can't be sure about which
+                person has what because of the variety.
+            </p>
+            <p>
+                In short, L-Diversity keeps secrets dafe by mixing different types of information in each group, so no one
+                    stands out too easily. It's like making sure that even if you peeked into a group's secret, it's just a mix
+                    of different types of clues, making it tough to single anyone out. Cool, right?
+            </p>
+        </div>
+    </div>
+
+    <!-- Apply L-Diversity -->
+    <div id="ApplyLDiverity" class="privacyModule" style="display:none;">
+        <button class="backButton" onclick="showModule('lDiversityMainScreen')">Back</button>
+        <h1>Apply L-Diversity</h1>
+        <div>
+            <p>
+                L-Diversity is a privacy concept that ensures each group of information contains multiple types of data, making
+                it harder to identify specific details about individuals.
+            </p>
+            <div>
+                <h2><b>Instructions:</b></h2>
+                <ol>
+                    <li>Enter values for "L-Diversity Level" and "Attribute Count" in the text boxes below.</li>
+                    <li>Click "Apply to Dataset" to implement L-Diversity and observe how it affects the dataset privacy.</li>
+                    <li>Compare the original and modified data distributions to see how L-Diversity protects sensitive information.</li>
+                </ol>
+            </div>
+            <div>
+                <label for="diversity-level">L-Diversity Level:</label>
+                <input type="text" id="diversity-level" placeholder="e.g., 3">
+            </div>
+            <div>
+                <label for="attribute-count">Attribute Count:</label>
+                <input type="text" id="attribute-count" placeholder="e.g., 5">
+            </div>
+            <button class="button" onclick="applyLDiversity()">Apply to Dataset</button>
+        </div>
     </div>
 
     <!-- T-Closeness Main Screen -->
@@ -130,18 +193,18 @@
         <h2>General Steps:</h2>
         <p>Here, we use a dataset contains sensitive attribute to do a step by step demonstration.</p>
         <h3>Step 01: The original dataset</h3>
-        <button onclick="loadCSVDataIndata('t_closeness_ex1-1.csv')">Show Original Dataset</button>
+        <button onclick="loadCSVDataInData('t_closeness_ex1-1.csv')">Show Original Dataset</button>
     
         <h3>Step 02: Remove the Name</h3>
         <p>Names are typically very sensitive and are therefore often removed immediately to protect privacy.</p>
-        <button onclick="loadCSVDataIndata('t_closeness_ex1-2.csv')">Show Dataset with Name Removed</button>
+        <button onclick="loadCSVDataInData('t_closeness_ex1-2.csv')">Show Dataset with Name Removed</button>
     
         <h3>Step 03: Apply K-Anonymity and L-Diversity</h3>
         <p>We have 2 sensitive attribute in this dataset: salary and disease.</p>
         <p>We anonymize the data and generalize the <u>Quasi-identifiers</u>: Age and Zip</p>
         <p>Target: 3-anonymity, 3-diversity</p>
-        <button onclick="loadCSVDataIndata('t_closeness_ex1-3.csv')">Show Dataset with Applied K-Anonymity</button>
-    
+        <button onclick="loadCSVDataInData('t_closeness_ex1-3.csv')">Show Dataset with Applied K-Anonymity</button>
+
         <h3>Step 04: Calculate T-Closeness distance</h3>
         <p>We can use some algorithms to calculate the distance.</p>
         <p>For this dataset, we have:</p>
@@ -179,9 +242,18 @@
 
         <!-- Description -->
         <p>
-            Differential Privacy is a technique used to protect individual privacy by adding random noise to data. 
+            <b>Differential Privacy</b> is a technique used to protect individual privacy by adding random noise to data. 
             This ensures that the privacy of individuals is preserved while still allowing useful insights to be drawn from the data. 
             In this module, you will explore how differential privacy works on both numerical and categorical data.
+        </p>
+        <p>
+            For <b>numerical data</b>, noise will be added to the <b>Age</b> values, and you can visualize how this affects the results. 
+            For <b>categorical data</b>, noise will be applied to the <b>Marital Status</b> column, and you will be able to compare the original distribution 
+            with a noisy distribution generated.
+        </p>
+        <p>
+            Additionally, you can reset all values back to their original state using the <b>Reset</b> button, which will reset both numerical and categorical values, 
+            as well as restore all visualizations and sliders to their initial positions.
         </p>
 
         <!-- Instructions -->
@@ -194,14 +266,19 @@
             </li>
             <br>
             <li>
-                Click <strong>"Apply To Numerical"</strong> to apply differential privacy to a numerical query that selects all individuals 
-                whose age is greater than or equal to 40. Observe how noise affects the true count of this query.
+                Click <strong>"Apply To Numerical"</strong> to apply differential privacy to the <b>Age</b> column and observe the original age vs the noisy age data points. 
+                There will also be a select query that gets all individuals whose age is greater than or equal to 40 where noise will be added
+                to the result. You can compare the original result and the noisy result displayed below.
             </li>
             <br>
             <li>
-                Click <strong>"Apply To Categorical"</strong> to apply differential privacy to categorical data using the 
-                Marital Status column. Compare the original distribution of marital statuses with the noisy distribution displayed below. 
-                This will help you understand how differential privacy alters categorical data distributions.
+                Click <strong>"Apply To Categorical"</strong> to apply differential privacy to categorical data using the <b>Marital Status</b> column. 
+                Compare how noise alters the original distribution of marital statuses with a noisy distribution displayed in the table below.
+            </li>
+            <br>
+            <li>
+                Click <strong>"Reset"</strong> to restore everything back to its original state. This will reset both numerical and categorical values, 
+                restore slider positions, reset colors in the table, and update all visualizations.
             </li>
         </ol>
 
@@ -212,20 +289,24 @@
         <!-- Sensitivity Slider (with explanation) -->
         <input type="range" id="sensitivitySlider" min="1.0" max="10.0" step="1.0" value="1.0" oninput="updateSensitivity(this.value)">
         <label for="sensitivitySlider">Sensitivity: <span id="sensitivityValue">1.0</span></label>
-        <p><em>Sensitivity is set to 1 for counting queries, but you can adjust it here for demonstration purposes.</em></p>
+        <p class="slider-description"><em>Sensitivity is set to 1 for selection queries, but you can adjust it here for demonstration purposes.</em></p>
 
         <!-- Apply Differential Privacy Buttons -->
         <div class="differentialPrivacyButtons">
-            <button onclick="applyDifferentialPrivacy()">Apply To Numerical</button>
-            <button onclick="generateNoisyCategoryDistribution('Marital Status')">Apply To Categorical</button>
+            <button onclick="generateNumericalNoise()">Apply To Numerical</button>
+            <button onclick="generateCategoricalNoise('Marital Status')">Apply To Categorical</button>
+            <!-- Reset Button -->
+            <button onclick="resetModule('Marital Status')">Reset</button> 
         </div>
 
         <!-- True and Noisy Results Display -->
-        <p><strong>True Result:</strong> <span id="trueResult">N/A</span></p>
+        <h3>Numerical Results</h3>
+        <p><strong>Original Result:</strong> <span id="originalResult">N/A</span></p>
         <p><strong>Noisy Result:</strong> <span id="noisyResult">N/A</span></p>
-
+        <br>
         <!-- Categorical Feature Display -->
-        <p><strong>Original Distribution:</strong> <span id="originalDistribution">N/A</span></p>
-        <p><strong>Noisy Category Distribution:</strong> <span id="noisyCategoryDistribution">N/A</span></p>
+        <!-- Single Table Displaying Both Original and Noisy Distributions -->
+        <h3>Categorical Distribution Table</h3>
+        <div id="distributionTable"></div>
     </div>
 </body>
