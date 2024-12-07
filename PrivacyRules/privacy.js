@@ -1,3 +1,6 @@
+// Global variable to track if the differential privacy data table has been loaded 
+let differentialDataLoaded = false;
+
 // Function to start the CODAP connection
 function startCodapConnection() {
     var config = {
@@ -8,7 +11,6 @@ function startCodapConnection() {
 
     codapInterface.init(config).then(() => {
         console.log('CODAP connection established.');
-        loadCSVDataInData('lite_adult_with_pii.csv');
     }).catch(msg => {
         console.error('CODAP connection error: ' + msg);
     });
@@ -40,6 +42,14 @@ function showModule(moduleID) {
     const modules = document.querySelectorAll('.privacyModule, #main');
     modules.forEach(module => module.style.display = 'none');
     document.getElementById(moduleID).style.display = 'block';
+
+    // Load data only once for differential privacy module
+    if (moduleID === 'differentialPrivacyMainScreen' && !differentialDataLoaded) {
+        console.log('Loading differential data...');
+        loadCSVDataInData('lite_adult_with_pii.csv');
+        differentialDataLoaded = true; // Set differentialDataLoaded to true after loading
+        console.log('Differential data loaded:', differentialDataLoaded);
+    }
 
     if (moduleID === 'differentialPrivacyIntro') {
         const attributeName = 'Marital Status';
