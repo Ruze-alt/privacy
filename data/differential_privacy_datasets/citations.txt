@@ -1,0 +1,31 @@
+"adult_data.csv"
+PLAID Research Group, "Adult with PII Dataset", Programming Differential Privacy, University of Vermont, 2023
+https://github.com/uvm-plaid/programming-dp/blob/master/notebooks/adult_with_pii.csv
+
+"bank_marketing.csv"
+Moro, S., Rita, P., & Cortez, P. (2014). Bank Marketing [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5K306.
+
+"employee_analytics.csv"
+Sanjana Chaudhari. (2023). Employee’s Performance for HR Analytics [Data set]. Kaggle. https://doi.org/10.34740/KAGGLE/DS/3537629
+
+"titanic.csv"
+Brenda N., "Titanic", Kaggle, 2024, CC0: Public Domain
+https://www.kaggle.com/datasets/brendan45774/test-file
+
+"hr_employee_attrition.csv"
+Pavan Subhash, "IBM HR Analytics Employee Attrition", Kaggle, 2018, DBCL 1.0
+https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset/data?select=WA_Fn-UseC_-HR-Employee-Attrition.csv
+
+"healthcare_dataset.csv"
+Prasad Patil, "Healthcare Dataset", Kaggle, 2023, CC0: Public Domain
+https://www.kaggle.com/datasets/prasad22/healthcare-dataset
+
+"students_performance.csv"
+Jakki Seshapanpu, "Students Performance in Exams", Kaggle, 2018
+https://www.kaggle.com/datasets/spscientist/students-performance-in-exams
+
+"hr_employee_data.csv"
+Kamal Das, "HR Employee Data Descriptive Analytics", Kaggle, 2023, © Original Authors
+https://www.kaggle.com/datasets/kmldas/hr-employee-data-descriptive-analytics/data
+
+
