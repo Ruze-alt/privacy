@@ -1,4 +1,4 @@
-Workclass,Education,Marital Status,Occupation,Relationship,Race,Age,Hours per week,Capital Gain,Capital Loss
+Workclass,Education,Marital Status,Occupation,Relationship,Race,Age,Hours Per Week,Capital Gain,Capital Loss
 Private,HS-grad,Widowed,Craft-repair,Not-in-family,White,13,40,0,0
 Private,Bachelors,Never-married,Prof-specialty,Not-in-family,White,43,40,0,0
 Private,Bachelors,Never-married,Exec-managerial,Not-in-family,Asian-Pac-Islander,18,40,0,0

@@ -1,4 +1,4 @@
-BusinessTravel,Department,EducationField,JobLevel,JobRole,MaritalStatus,TrainingTimesLastYear,Age,DistanceFromHome,MonthlyIncome,PercentSalaryHike,TotalWorkingYears,YearsAtCompany,YearsInCurrentRole
+Business Travel,Department,Education Field,Job Level,Job Role,Marital Status,Training Times Last Year,Age,Distance From Home,Monthly Income,Percent Salary Hike,Total Working Years,Years At Company,Years In Current Role
 Travel_Rarely,Research & Development,Life Sciences,4,Manager,Married,2,50,29,17046,15,28,27,10
 Travel_Frequently,Research & Development,Life Sciences,4,Research Director,Married,3,58,15,15787,14,23,2,2
 Non-Travel,Research & Development,Life Sciences,1,Laboratory Technician,Married,3,35,3,1281,18,1,1,0

@@ -1,4 +1,4 @@
-Department,time_spend_company,number_project,salary,satisfaction_level,last_evaluation,average_montly_hours
+Department,Years At Company,Number Of Projects,Salary Level,Satisfaction Level,Last Evaluation,Average Monthly Hours
 accounting,3,2,low,0.43,0.47,131
 technical,5,5,medium,0.85,0.96,165
 hr,5,3,medium,0.2,0.58,209
@@ -31,7 +31,7 @@ sales,5,5,medium,0.85,0.87,246
 management,10,3,high,0.22,0.94,193
 IT,2,2,low,0.53,0.65,189
 sales,8,3,low,0.92,0.44,260
-marketing,2,4,high,1.0,0.86,161
+marketing,2,4,high,1,0.86,161
 product_mng,3,6,medium,0.32,0.42,114
 technical,3,4,high,0.48,0.56,271
 support,5,4,low,0.2,0.93,101
@@ -40,7 +40,7 @@ sales,10,4,medium,0.14,0.58,275
 hr,5,5,medium,0.23,0.64,150
 sales,10,3,low,0.66,0.5,139
 sales,4,4,low,0.18,0.5,169
-technical,3,4,low,1.0,0.6,261
+technical,3,4,low,1,0.6,261
 technical,3,5,medium,0.36,0.44,155
 marketing,4,4,low,0.91,0.6,235
 sales,2,3,medium,0.93,0.75,243
@@ -52,7 +52,7 @@ management,10,4,high,0.77,0.89,269
 sales,4,5,medium,0.62,0.75,165
 IT,3,2,medium,0.4,0.48,161
 technical,6,6,medium,0.22,0.85,172
-support,4,4,low,1.0,0.99,184
+support,4,4,low,1,0.99,184
 support,3,3,medium,0.91,0.9,243
 sales,3,4,medium,0.24,0.5,209
 hr,3,3,medium,0.53,0.82,133
@@ -118,7 +118,7 @@ technical,3,4,medium,0.78,0.72,258
 technical,3,3,high,0.61,0.73,252
 product_mng,2,4,medium,0.58,0.86,168
 accounting,2,3,high,0.54,0.8,232
-sales,4,3,medium,1.0,0.91,160
+sales,4,3,medium,1,0.91,160
 technical,3,2,low,0.4,0.46,135
 product_mng,3,2,low,0.37,0.51,153
 support,2,3,low,0.35,0.69,141
@@ -132,11 +132,11 @@ accounting,3,4,medium,0.54,0.84,223
 sales,3,3,low,0.95,0.53,264
 IT,2,4,low,0.8,0.9,241
 sales,3,4,medium,0.55,0.57,220
-sales,3,5,low,1.0,0.77,269
+sales,3,5,low,1,0.77,269
 sales,2,4,low,0.55,0.81,260
 sales,3,3,high,0.71,0.63,254
 IT,3,4,low,0.5,0.73,180
-support,5,5,low,0.9,1.0,221
+support,5,5,low,0.9,1,221
 sales,3,2,medium,0.43,0.46,239
 marketing,6,5,low,0.78,0.98,239
 support,3,3,low,0.94,0.77,201
@@ -200,7 +200,7 @@ sales,3,4,medium,0.63,0.95,137
 hr,3,2,low,0.45,0.55,140
 IT,3,4,low,0.76,0.77,223
 product_mng,4,4,medium,0.19,0.79,229
-technical,5,4,medium,0.73,1.0,252
+technical,5,4,medium,0.73,1,252
 support,3,2,medium,0.47,0.49,112
 sales,3,2,low,0.37,0.45,131
 IT,2,3,high,0.59,0.82,162
@@ -216,12 +216,12 @@ hr,4,6,medium,0.1,0.84,246
 accounting,4,6,low,0.11,0.91,272
 sales,5,5,low,0.83,0.81,219
 sales,3,2,low,0.41,0.47,138
-management,5,4,medium,0.79,1.0,229
+management,5,4,medium,0.79,1,229
 hr,2,3,medium,0.64,0.59,200
 support,3,4,low,0.75,0.98,198
 sales,2,4,medium,0.67,0.82,171
 sales,3,4,medium,0.65,0.51,157
-sales,3,4,medium,0.65,1.0,249
+sales,3,4,medium,0.65,1,249
 IT,3,2,low,0.5,0.85,143
 support,4,6,low,0.1,0.93,256
 hr,4,6,high,0.22,0.64,260
@@ -241,7 +241,7 @@ IT,3,2,low,0.4,0.56,131
 product_mng,4,6,high,0.46,0.73,256
 accounting,4,6,medium,0.1,0.81,290
 sales,3,4,medium,0.37,0.63,153
-technical,4,4,medium,1.0,0.55,186
+technical,4,4,medium,1,0.55,186
 technical,2,5,medium,0.42,0.41,240
 IT,2,3,medium,0.75,0.96,138
 marketing,3,5,medium,0.44,0.67,170
@@ -249,7 +249,7 @@ technical,3,4,medium,0.98,0.89,169
 sales,2,3,medium,0.4,0.37,123
 IT,5,2,low,0.65,0.76,170
 product_mng,2,4,medium,0.76,0.45,147
-sales,5,4,low,0.79,1.0,218
+sales,5,4,low,0.79,1,218
 accounting,3,4,low,0.7,0.59,216
 technical,3,3,low,0.72,0.63,176
 IT,2,3,low,0.9,0.54,272
@@ -274,15 +274,15 @@ RandD,3,3,low,0.95,0.96,220
 sales,3,4,medium,0.91,0.62,158
 IT,2,5,low,0.65,0.83,182
 sales,2,5,medium,0.53,0.81,135
-product_mng,3,3,medium,1.0,0.87,274
+product_mng,3,3,medium,1,0.87,274
 IT,3,3,medium,0.62,0.85,237
 technical,2,5,medium,0.91,0.65,174
 IT,3,3,medium,0.5,0.77,265
 hr,3,4,low,0.71,0.95,249
-sales,5,5,medium,0.78,1.0,236
+sales,5,5,medium,0.78,1,236
 support,3,3,medium,0.7,0.6,267
 technical,3,2,low,0.37,0.57,158
-sales,5,5,medium,0.78,1.0,236
+sales,5,5,medium,0.78,1,236
 product_mng,3,2,low,0.45,0.56,143
 IT,4,6,medium,0.1,0.87,286
 IT,4,4,low,0.73,0.86,196
@@ -332,7 +332,7 @@ technical,4,3,high,0.96,0.51,237
 accounting,3,4,low,0.56,0.49,256
 support,3,3,medium,0.96,0.99,148
 sales,3,3,high,0.5,0.82,213
-product_mng,2,5,medium,0.85,1.0,244
+product_mng,2,5,medium,0.85,1,244
 marketing,4,5,medium,0.12,0.55,242
 support,3,4,medium,0.63,0.91,252
 IT,5,6,low,0.09,0.94,283
@@ -348,7 +348,7 @@ product_mng,3,3,low,0.35,0.4,130
 hr,3,3,low,0.56,0.88,174
 accounting,3,5,medium,0.65,0.89,223
 product_mng,3,4,low,0.7,0.6,158
-IT,5,4,low,0.74,1.0,249
+IT,5,4,low,0.74,1,249
 support,6,3,medium,0.74,0.56,125
 support,6,5,low,0.74,0.89,229
 sales,5,4,low,0.82,0.98,233
@@ -406,7 +406,7 @@ RandD,2,4,medium,0.49,0.49,240
 technical,3,3,low,0.31,0.69,120
 technical,4,4,medium,0.67,0.92,265
 RandD,2,6,low,0.34,0.69,283
-hr,3,6,medium,0.91,1.0,242
+hr,3,6,medium,0.91,1,242
 management,3,3,low,0.56,0.61,224
 IT,4,2,low,0.75,0.73,152
 support,2,3,medium,0.97,0.5,225
@@ -500,7 +500,7 @@ sales,3,6,medium,0.66,0.57,278
 sales,3,3,low,0.94,0.69,248
 technical,3,5,medium,0.76,0.58,136
 IT,3,5,high,0.49,0.76,237
-support,2,5,low,0.81,1.0,143
+support,2,5,low,0.81,1,143
 product_mng,2,2,medium,0.71,0.61,216
 technical,2,5,medium,0.98,0.93,203
 technical,2,3,medium,0.9,0.49,237
@@ -532,7 +532,7 @@ management,3,2,low,0.36,0.5,132
 sales,3,5,low,0.59,0.99,254
 support,2,4,medium,0.5,0.83,242
 management,3,2,low,0.42,0.48,129
-technical,6,5,low,0.88,1.0,219
+technical,6,5,low,0.88,1,219
 accounting,3,2,medium,0.36,0.52,143
 technical,3,5,low,0.23,0.88,201
 IT,4,4,low,0.96,0.9,164
@@ -546,7 +546,7 @@ technical,2,4,medium,0.71,0.65,263
 IT,3,2,high,0.37,0.51,153
 sales,3,4,medium,0.75,0.93,195
 sales,4,3,low,0.44,0.65,271
-product_mng,3,5,low,0.96,1.0,148
+product_mng,3,5,low,0.96,1,148
 sales,3,4,low,0.58,0.74,215
 IT,5,2,low,0.32,0.72,240
 sales,3,4,low,0.89,0.68,146
@@ -579,7 +579,7 @@ hr,2,3,medium,0.73,0.91,135
 product_mng,3,3,low,0.52,0.9,133
 technical,3,5,medium,0.16,0.9,258
 support,4,5,medium,0.24,0.62,169
-RandD,5,4,medium,0.77,1.0,255
+RandD,5,4,medium,0.77,1,255
 management,10,4,high,0.64,0.5,253
 technical,2,3,low,0.57,0.52,143
 IT,4,4,low,0.64,0.61,191
@@ -590,7 +590,7 @@ technical,3,2,low,0.36,0.48,137
 hr,5,6,low,0.46,0.47,101
 product_mng,3,2,low,0.38,0.5,170
 hr,4,4,medium,0.75,0.5,98
-technical,5,4,medium,0.87,1.0,224
+technical,5,4,medium,0.87,1,224
 technical,2,3,medium,0.82,0.83,271
 support,3,2,low,0.41,0.57,136
 sales,3,4,medium,0.8,0.51,213
@@ -604,7 +604,7 @@ hr,3,2,low,0.42,0.5,143
 management,6,3,high,0.77,0.98,286
 sales,4,3,medium,0.72,0.68,135
 support,5,6,low,0.15,0.51,248
-IT,3,4,low,1.0,0.87,256
+IT,3,4,low,1,0.87,256
 technical,4,4,low,0.63,0.54,147
 RandD,4,3,medium,0.57,0.78,206
 support,2,4,medium,0.54,0.94,217
@@ -681,7 +681,7 @@ IT,5,6,low,0.09,0.94,283
 IT,2,3,low,0.94,0.51,160
 RandD,3,3,medium,0.52,0.78,181
 RandD,2,3,low,0.57,0.69,154
-sales,7,5,medium,1.0,0.72,194
+sales,7,5,medium,1,0.72,194
 IT,6,6,high,0.78,0.63,111
 hr,2,3,high,0.76,0.7,136
 sales,5,3,low,0.74,0.64,267
@@ -713,7 +713,7 @@ IT,3,2,low,0.37,0.46,149
 sales,4,7,medium,0.09,0.87,305
 sales,4,4,medium,0.72,0.75,211
 sales,3,2,medium,0.56,0.4,255
-sales,2,3,low,0.97,1.0,198
+sales,2,3,low,0.97,1,198
 technical,6,6,low,0.14,0.83,275
 technical,3,2,medium,0.44,0.56,133
 sales,5,5,low,0.82,0.84,244
@@ -770,7 +770,7 @@ technical,3,2,medium,0.45,0.54,129
 management,2,3,high,0.5,0.77,267
 support,2,4,medium,0.65,0.86,267
 sales,3,4,medium,0.64,0.73,184
-sales,3,5,medium,0.71,1.0,210
+sales,3,5,medium,0.71,1,210
 management,2,3,medium,0.67,0.64,198
 sales,7,2,low,0.83,0.76,255
 accounting,3,3,medium,0.66,0.97,263
@@ -816,7 +816,7 @@ support,4,6,low,0.11,0.92,260
 technical,4,7,medium,0.1,0.9,301
 support,2,4,low,0.7,0.87,252
 product_mng,3,2,low,0.43,0.52,139
-sales,3,3,low,1.0,0.89,189
+sales,3,3,low,1,0.89,189
 sales,3,3,low,0.75,0.52,260
 sales,3,4,low,0.58,0.86,257
 sales,2,2,low,0.83,0.64,192
@@ -839,9 +839,9 @@ IT,6,4,low,0.66,0.78,161
 hr,3,2,medium,0.39,0.5,142
 technical,6,6,medium,0.38,0.86,139
 technical,5,6,low,0.32,0.4,162
-technical,4,6,low,1.0,0.88,201
+technical,4,6,low,1,0.88,201
 sales,3,2,medium,0.54,0.74,166
-sales,5,5,medium,0.78,1.0,236
+sales,5,5,medium,0.78,1,236
 technical,3,2,low,0.36,0.55,131
 sales,3,5,low,0.83,0.55,247
 support,2,3,low,0.51,0.8,218
@@ -853,7 +853,7 @@ support,2,2,low,0.61,0.62,192
 sales,3,2,low,0.38,0.54,143
 technical,3,4,low,0.77,0.49,184
 support,3,3,medium,0.78,0.89,211
-accounting,2,5,medium,1.0,0.97,141
+accounting,2,5,medium,1,0.97,141
 support,6,4,medium,0.31,0.92,133
 technical,4,2,high,0.52,0.51,232
 sales,3,2,low,0.44,0.57,131
@@ -912,7 +912,7 @@ technical,3,2,low,0.44,0.46,149
 sales,3,2,low,0.42,0.48,143
 technical,2,4,low,0.66,0.77,188
 hr,3,3,medium,0.98,0.66,150
-hr,6,4,medium,0.82,1.0,229
+hr,6,4,medium,0.82,1,229
 sales,3,2,medium,0.54,0.74,166
 sales,2,5,medium,0.52,0.62,239
 sales,4,3,high,0.92,0.88,145
@@ -956,10 +956,10 @@ marketing,2,4,medium,0.32,0.52,191
 IT,3,4,low,0.54,0.59,202
 product_mng,3,5,low,0.56,0.71,244
 sales,3,5,medium,0.95,0.68,225
-hr,2,5,medium,0.63,1.0,244
+hr,2,5,medium,0.63,1,244
 technical,3,2,medium,0.31,0.62,139
 marketing,3,4,medium,0.93,0.97,227
-IT,4,3,medium,0.53,1.0,164
+IT,4,3,medium,0.53,1,164
 technical,4,4,medium,0.68,0.7,185
 product_mng,3,3,low,0.31,0.7,132
 sales,2,5,low,0.95,0.52,222
